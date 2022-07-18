@@ -1,6 +1,8 @@
 package com.galvanize;
 
 
+import java.util.HashMap;
+
 public class Algorithm {
 
     public boolean allEqual(String word) {
@@ -28,5 +30,31 @@ public class Algorithm {
             }
         }
         return result;
+    }
+
+    public HashMap<String,Long> letterCount(String word) {
+        HashMap<String,Long> map = new HashMap<>();
+
+        // empty case
+        if(word.length() == 0) {
+            return map;
+        }
+
+        // normal case
+        String lowerWord = word.toLowerCase();
+        // iterate
+        for (int i = 0; i < lowerWord.length(); i++) {
+            // if key is in map, add to value,
+            String key = "" + lowerWord.charAt(i);
+            if( map.containsKey(key) ) {
+                map.put(key, map.get(key) + 1);
+            }
+            // otherwise, create pair with value 1
+            else {
+                map.put(key, 1L);
+            }
+        }
+
+        return map;
     }
 }
