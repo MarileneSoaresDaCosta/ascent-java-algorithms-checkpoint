@@ -2,6 +2,8 @@ package com.galvanize;
 
 
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class Algorithm {
 
@@ -32,8 +34,8 @@ public class Algorithm {
         return result;
     }
 
-    public HashMap<String,Long> letterCount(String word) {
-        HashMap<String,Long> map = new HashMap<>();
+    public Map<String,Long> letterCount(String word) {
+        Map<String,Long> map = new HashMap<>();
 
         // empty case
         if(word.length() == 0) {
@@ -56,5 +58,22 @@ public class Algorithm {
         }
 
         return map;
+    }
+
+
+    public String interleave(List<String> arrayList1, List<String> arrayList2) {
+        // accumulator
+        StringBuilder result = new StringBuilder();
+
+        // empty case
+        if(arrayList1.size() == 0) {
+            return result.toString();
+        }
+        // normal case
+        for (int i = 0; i < arrayList1.size(); i++) {
+            result.append(arrayList1.get(i)).append(arrayList2.get(i));
+        }
+        return result.toString();
+
     }
 }

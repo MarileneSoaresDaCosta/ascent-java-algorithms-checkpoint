@@ -3,11 +3,15 @@ package com.galvanize;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class AlgorithmTest {
+    // testing allEqual
     @Test
     public void returnsTrueForAllAs() {
         //setup
@@ -55,16 +59,16 @@ public class AlgorithmTest {
 //        //assertion
         assertEquals(expected, actual);
     }
-
+    // testing letterCount
     @Test
     public void returnMapWithSinglePairForAA() {
         // set up
         Algorithm algorithm = new Algorithm();
         String twoAs = "aa";
         //execution
-        HashMap<String,Long> expected = new HashMap<>();
+        Map<String,Long> expected = new HashMap<>();
         expected.put("a", 2L);
-        HashMap<String,Long> actual = algorithm.letterCount(twoAs);
+        Map<String,Long> actual = algorithm.letterCount(twoAs);
         //assertion
         assertEquals(expected, actual);
     }
@@ -75,11 +79,40 @@ public class AlgorithmTest {
         Algorithm algorithm = new Algorithm();
         String empty = "";
         //execution
-        HashMap<String,Long> expected = new HashMap<>();
-        HashMap<String,Long> actual = algorithm.letterCount(empty);
+        Map<String,Long> expected = new HashMap<>();
+        Map<String,Long> actual = algorithm.letterCount(empty);
         //assertion
         assertEquals(expected, actual);
     }
 
 
+// interleave acceptance criteria
+//Algorithm algorithm = new Algorithm();
+//algorithm.interleave(Arrays.asList("a", "b", "c"), Arrays.asList("d", "e", "f"));  // => returns "adbecf"
+//algorithm.interleave(Arrays.asList("a", "c", "e"), Arrays.asList("b", "d", "f"));  // => returns "abcdef"
+//algorithm.interleave(Collections.emptyList(), Collections.emptyList());
+
+    @Test
+    public void interleavesRegularLists() {
+        // set up
+        Algorithm algorithm = new Algorithm();
+
+        //execution
+        String actual = algorithm.interleave(Arrays.asList("a", "b", "c"), Arrays.asList("d", "e", "f"));
+        String expected = "adbecf";
+        //assertion
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void interleavesEmptyLists() {
+        // set up
+        Algorithm algorithm = new Algorithm();
+
+        //execution
+        String actual = algorithm.interleave(Collections.emptyList(), Collections.emptyList());
+        String expected = "";
+        //assertion
+        assertEquals(expected, actual);
+    }
 }
